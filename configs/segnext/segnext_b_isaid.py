@@ -12,6 +12,7 @@ model = dict(
     ),
     decode_head=dict(
         num_classes=15,
+        ignore_index=255,
         loss_decode=dict(type='CrossEntropyLoss', avg_non_ignore=True)
     )  
 )
