@@ -52,6 +52,7 @@ train_dataloader = dict(
         data_root=data_root,
         data_prefix=dict(
             img_path='img_dir/train', seg_map_path='ann_dir/train'),
+        reduce_zero_label=True,
         pipeline=train_pipeline))
 val_dataloader = dict(
     batch_size=4,
