@@ -44,8 +44,9 @@ train_cfg = dict(
 
 default_hooks = dict(
     logger=dict(type='LoggerHook', interval=250, log_metric_by_epoch=False),
-    checkpoint=dict(type='CheckpointHook', by_epoch=False, interval=8000)
+    checkpoint=dict(type='CheckpointHook', by_epoch=False, interval=8000,save_best='mIoU')
 )
+
 
 #FP16
 optimizer_config = dict(grad_clip=dict(max_norm=0.35, norm_type=2))
