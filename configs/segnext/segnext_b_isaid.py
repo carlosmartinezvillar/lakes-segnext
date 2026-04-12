@@ -7,6 +7,9 @@ _base_ = [
 
 
 model = dict(
+    data_preprocessor=dict(
+        size=(896,896)
+    ),
     decode_head=dict(
         num_classes=15,
         loss_decode=dict(type='CrossEntropyLoss', avg_non_ignore=True)
