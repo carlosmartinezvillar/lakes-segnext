@@ -63,6 +63,7 @@ val_dataloader = dict(
         type=dataset_type,
         data_root=data_root,
         data_prefix=dict(img_path='img_dir/val', seg_map_path='ann_dir/val'),
+        reduce_zero_label=True,
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 
