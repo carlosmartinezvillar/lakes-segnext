@@ -53,7 +53,10 @@ train_dataloader = dict(
         data_prefix=dict(
             img_path='img_dir/train', seg_map_path='ann_dir/train'),
         reduce_zero_label=True,
-        pipeline=train_pipeline))
+        pipeline=train_pipeline
+    ),
+    pin_memory=True
+)
 val_dataloader = dict(
     batch_size=4,
     num_workers=4,
