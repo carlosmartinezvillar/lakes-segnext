@@ -11,7 +11,7 @@ crop_size = (896, 896)
 
 train_pipeline = [
     dict(type='LoadImageFromFile'),
-    dict(type='LoadAnnotations'),
+    dict(type='LoadAnnotations',reduce_zero_label=True),
     dict(type='RandomResize',scale=(896, 896),ratio_range=(0.5, 2.0),keep_ratio=True),
     dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
     dict(type='RandomFlip', prob=0.5),

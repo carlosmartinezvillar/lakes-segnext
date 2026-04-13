@@ -13,7 +13,13 @@ model = dict(
     decode_head=dict(
         num_classes=15,
         ignore_index=255,
-        loss_decode=dict(type='CrossEntropyLoss', avg_non_ignore=True)
+        loss_decode=dict(
+            type='CrossEntropyLoss', 
+            use_sigmoid=False, 
+            loss_weight=1.0, 
+            ignore_index=255,
+            avg_non_ignore=True
+        )
     )  
 )
 
