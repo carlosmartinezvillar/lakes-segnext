@@ -11,7 +11,7 @@ model = dict(
         size=(896,896)
     ),
     decode_head=dict(
-        num_classes=15,
+        num_classes=16,
         ignore_index=255,
         loss_decode=dict(
             type='CrossEntropyLoss', 

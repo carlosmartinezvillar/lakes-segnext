@@ -11,7 +11,7 @@ crop_size = (896, 896)
 
 train_pipeline = [
     dict(type='LoadImageFromFile'),
-    dict(type='LoadAnnotations',reduce_zero_label=True),
+    dict(type='LoadAnnotations',reduce_zero_label=False),
     dict(type='RandomResize',scale=(896, 896),ratio_range=(0.5, 2.0),keep_ratio=True),
     dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
     dict(type='RandomFlip', prob=0.5),
@@ -52,7 +52,6 @@ train_dataloader = dict(
         data_root=data_root,
         data_prefix=dict(
             img_path='img_dir/train', seg_map_path='ann_dir/train'),
-        reduce_zero_label=True,
         pipeline=train_pipeline
     ),
     pin_memory=True
@@ -66,9 +65,8 @@ val_dataloader = dict(
         type=dataset_type,
         data_root=data_root,
         data_prefix=dict(img_path='img_dir/val', seg_map_path='ann_dir/val'),
-        reduce_zero_label=True,
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 
-val_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'])
+val_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'],ignore_index=0)
 test_evaluator = val_evaluator
